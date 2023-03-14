@@ -1,0 +1,141 @@
+/*Mobile*/
+@media (max-width: 500px) {
+    .div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+
+        width: 100%;
+        padding: 20px;
+
+        border-bottom: 2px solid #fd5d93;
+        background-color: #27293d;
+
+        cursor: pointer;
+    }
+
+    .h1 {
+        width: fit-content;
+        height: fit-content;
+        padding: 6px;
+
+        border-radius: 8px;
+        background-color: #000;
+
+        font-size: 3.2rem;
+        font-family: "Share Tech Mono", sans-serif;
+        font-weight: 400;
+        color: #FFF;
+    }
+
+    .label {
+        width: fit-content;
+        height: fit-content;
+    }
+    
+    .i {
+        width: fit-content;
+        height: fit-content;
+        font-size: 48px;
+        color: #FFF;
+    }
+
+    .ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        width: 100%;
+    }
+
+    .ulDisable {
+        display: none;
+    }
+
+    .li {
+        list-style: none;
+        
+        font-family: "Share Tech Mono", sans-serif;
+        font-size: 16px;
+        color: #FFF;
+
+        cursor: pointer;
+    }
+
+    .discord {
+        color: #1f8ef1;
+    }
+
+    .taverna {
+        color: #00d6b4;
+    }
+}
+
+
+/*Browser*/
+@media (min-width: 501px) {
+    .div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+
+        width: auto;
+        padding: 15px;
+
+        border-bottom: 2px solid #fd5d93;
+        background-color: #27293d;
+
+        cursor: pointer;
+    }
+
+    .h1 {
+        width: fit-content;
+        height: fit-content;
+        padding: 6px;
+        margin-left: 7%;
+
+        border-radius: 8px;
+        background-color: #000;
+
+        font-size: 3.2rem;
+        font-family: "Share Tech Mono", sans-serif;
+        font-weight: 400;
+        color: #FFF;
+    }
+
+    .label {
+        display: none;
+    }
+
+    .ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+
+        margin-right: 7%;
+    }
+
+    .li {
+        list-style: none;
+        
+        font-family: "Share Tech Mono", sans-serif;
+        font-size: 16px;
+        color: #FFF;
+
+        cursor: pointer;
+    }
+
+    .discord {
+        color: #1f8ef1;
+    }
+
+    .taverna {
+        color: #00d6b4;
+    }
+}
