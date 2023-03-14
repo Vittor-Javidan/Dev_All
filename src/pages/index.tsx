@@ -1,4 +1,5 @@
-import Navbar from '../components/Navbar'
+import { Content } from '@/components/Content'
+import Navbar from '@/components/Navbar'
 import styles from './styles.module.css'
 
 export default function Home() {
@@ -9,6 +10,10 @@ export default function Home() {
         a navbar a qualquer momento, de acordo com sua navegação caso seja carrega muitos posts.
       */}
       <Navbar/>
+      <div className={styles.div}>
+        <Content/>
+        
+      </div>
     </div>
   )
 }

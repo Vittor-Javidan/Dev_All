@@ -75,8 +75,8 @@ export default function Navbar() {
                     <a 
                         className={styles.a}
                     >
-                        CADASTRE-SE
-                    !</a>
+                        CADASTRE-SE!
+                    </a>
                 </li>
                 <li className={styles.li}>
                     <a 

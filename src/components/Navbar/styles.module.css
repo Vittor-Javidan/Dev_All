@@ -1,5 +1,6 @@
 /*Mobile*/
 @media (max-width: 500px) {
+
     .div {
         display: flex;
         flex-wrap: wrap;
@@ -95,7 +96,7 @@
         align-items: center;
         gap: 32px;
 
-        width: auto;
+        width: 100%;
         padding: 15px;
 
         border-bottom: 2px solid #fd5d93;

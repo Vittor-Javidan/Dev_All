@@ -1,20 +1,31 @@
 @media (max-width: 500px) {
     .background {
         width: 100vw;
-        height: 100vh;
         background-color: #1e1e2e;
 
         overflow: hidden;
+    }
+
+    .div {
+        width: auto;
+        height: calc(100vh - 92px);
+        overflow-y: scroll;
     }
 }
 
 @media (min-width: 501px) {
     .background {
         width: 100vw;
-        height: 100vh;
+        
         padding: 7px;
         background-color: #1e1e2e;
 
         overflow: hidden;
+    }
+
+    .div {
+        width: auto;
+        height: calc(100vh - 92px); /*calc(100vh - Navbar Height)*/
+        overflow-y: scroll;
     }
 }

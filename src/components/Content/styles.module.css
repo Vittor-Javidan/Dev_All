@@ -1,0 +1,38 @@
+/*Mobile*/
+@media (max-width: 500px) {
+    .div {
+        height: 100%;
+        width: 100%;
+    }
+
+    .cardsDiv {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        padding: 10px;
+    }
+}
+
+
+/*Browser*/
+@media (min-width: 501px) {
+    .div {
+        height: 100%;
+        width: 100%;
+    }
+
+    .cardsDiv {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        gap: 60px;
+
+        padding: 50px;
+        padding-bottom: 180px;
+        margin: 0 7%;
+    }
+}
