@@ -1,7 +1,7 @@
 /*Mobile*/
 @media (max-width: 500px) {
 
-    .div {
+    .div {        
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

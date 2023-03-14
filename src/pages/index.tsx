@@ -1,4 +1,5 @@
 import { Content } from '@/components/Content'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import styles from './styles.module.css'
 
@@ -11,8 +12,8 @@ export default function Home() {
       */}
       <Navbar/>
       <div className={styles.div}>
-        <Content/>
-        
+        <Content />
+        <Footer />
       </div>
     </div>
   )
