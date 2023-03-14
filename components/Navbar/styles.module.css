@@ -66,6 +66,16 @@
         cursor: pointer;
     }
 
+    .a {
+        text-decoration: none;
+        text-decoration-line: none;
+    }
+
+    .a:active {
+        text-decoration: none;
+        text-decoration-line: none;
+    }
+
     .discord {
         color: #1f8ef1;
     }
@@ -129,6 +139,16 @@
         color: #FFF;
 
         cursor: pointer;
+    }
+
+    .a {
+        text-decoration: none;
+        text-decoration-line: none;
+    }
+
+    .a:active {
+        text-decoration: none;
+        text-decoration-line: none;
     }
 
     .discord {

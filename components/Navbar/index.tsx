@@ -24,26 +24,67 @@ export default function Navbar() {
                 ${!toggle && styles.ulDisable}
             `}>
                 <li 
-                    className={`
-                        ${styles.li}
-                        ${styles.discord}
-                    `}
+                    className={styles.li}
                 >
-                    DISCORD
+                    <a 
+                        className={`
+                            ${styles.a}
+                            ${styles.discord}
+                        `} 
+                        href="https://discord.com/invite/JyXzTcP"
+                        target={"_blank"}
+                    >
+                        DISCORD
+                    </a>
                 </li>
                 <li 
-                    className={`
-                        ${styles.li}
-                        ${styles.taverna}
-                    `}
+                    className={styles.li}
                 >
-                    TAVERNA
+                    <a 
+                        className={`
+                            ${styles.a}
+                            ${styles.taverna}
+                        `} 
+                        href=""
+                    >
+                        TAVERNA
+                    </a>
                 </li>
-                <li className={styles.li}>REVISTA</li>
-                <li className={styles.li}>BLOGS</li>
-                <li className={styles.li}>SOBRE</li>
-                <li className={styles.li}>CADASTRE-SE!</li>
-                <li className={styles.li}>ENTRAR</li>
+                <li className={styles.li}>
+                    <a 
+                        className={styles.a}
+                    >
+                        REVISTA
+                    </a>
+                </li>
+                <li className={styles.li}>
+                    <a 
+                        className={styles.a}
+                    >
+                        BLOGS
+                    </a>
+                </li>
+                <li className={styles.li}>
+                    <a 
+                        className={styles.a}
+                    >
+                        SOBRE
+                    </a>
+                </li>
+                <li className={styles.li}>
+                    <a 
+                        className={styles.a}
+                    >
+                        CADASTRE-SE
+                    !</a>
+                </li>
+                <li className={styles.li}>
+                    <a 
+                        className={styles.a}
+                    >
+                        ENTRAR
+                    </a>
+                </li>
             </ul>
         </div>
     )
