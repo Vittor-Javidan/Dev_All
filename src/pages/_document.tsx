@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document'
-import ShareTechMonoFont from '../../headComponents/Font'
-import FontAwesome from '../../headComponents/Icons'
+import ShareTechMonoFont from '../headComponents/Font'
+import FontAwesome from '../headComponents/Icons'
 
 export default function Document() {
   return (
