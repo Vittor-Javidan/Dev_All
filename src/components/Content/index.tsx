@@ -30,11 +30,13 @@ export function Content() {
                         console.log(setPesquisa(e.target.value))
                     }
                 />
-                <button
-                    className={styles.pesquisaButton}
-                >
-                    <i className='bx bx-search-alt' ></i>
-                </button>
+                {/*
+                    <button
+                        className={styles.pesquisaButton}
+                    >
+                        <i className='bx bx-search-alt' ></i>
+                    </button>
+                */}
             </div>
             <Cards 
                 pesquisa={pesquisa}
