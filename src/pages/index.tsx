@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import styles from './styles.module.css'
 
+//TODO: Traduzir todos os components, funções e variáveis para português
 export default function Home() {
   return (
     <div className={styles.background}>

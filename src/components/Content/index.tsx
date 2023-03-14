@@ -2,10 +2,19 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
 
-async function useFetchPost(setPosts: Dispatch<SetStateAction<any>>) {
-    const postsResponse = await fetch("https://api.devall.com.br/api/v1/post")
+
+//TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
+async function fazerFetchPosts(setPosts: Dispatch<SetStateAction<any>>, page: number) {
+    const postsResponse = await fetch(`https://api.devall.com.br/api/v1/post?page=${page}`)
     const postsArray = await postsResponse.json()
     setPosts(postsArray)
+}
+
+//TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
+async function fazerFetchMaisPosts(setPosts: Dispatch<SetStateAction<any[]>>, page: number) {
+    const postsResponse = await fetch(`https://api.devall.com.br/api/v1/post?page=${page}`)
+    const postsArray = await postsResponse.json()
+    setPosts(prev => [...prev, ...postsArray])
 }
 
 export function Content() {
@@ -14,7 +23,7 @@ export function Content() {
     const [pesquisa, setPesquisa] = useState("")
 
     useEffect(() => {
-        useFetchPost(setPosts)
+        fazerFetchPosts(setPosts, 1)
     }, [])
 
     return (
@@ -31,6 +40,7 @@ export function Content() {
                     }
                 />
                 {/*
+                    //TODO: Fazer com que a pesquise so ative ao apertar o botão de pesquisa, ao invés de deixar o componente controlado
                     <button
                         className={styles.pesquisaButton}
                     >
@@ -42,6 +52,9 @@ export function Content() {
                 pesquisa={pesquisa}
                 posts={posts}
             />
+            {/*
+                //TODO: Adicionar um botão para fazer fetch de mais dados.
+            */}
         </div>
     )
 }
