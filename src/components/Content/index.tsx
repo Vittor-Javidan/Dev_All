@@ -11,6 +11,7 @@ async function useFetchPost(setPosts: Dispatch<SetStateAction<any>>) {
 export function Content() {
 
     const [posts, setPosts] = useState([])
+    const [pesquisa, setPesquisa] = useState("")
 
     useEffect(() => {
         useFetchPost(setPosts)
@@ -18,7 +19,25 @@ export function Content() {
 
     return (
         <div className={styles.div}>
+            <div
+                className={styles.pesquisaDiv}
+            >
+                <input 
+                    className={styles.pesquisaInput}
+                    value={pesquisa} 
+                    placeholder="Encontre aqui"
+                    onChange={(e) => 
+                        console.log(setPesquisa(e.target.value))
+                    }
+                />
+                <button
+                    className={styles.pesquisaButton}
+                >
+                    <i className='bx bx-search-alt' ></i>
+                </button>
+            </div>
             <Cards 
+                pesquisa={pesquisa}
                 posts={posts}
             />
         </div>
@@ -26,26 +45,31 @@ export function Content() {
 }
 
 function Cards(props: {
+    pesquisa: string
     posts: any[]
 }): JSX.Element {
 
-    const cardsArray = props.posts.map((post, index) => (
-        <Card 
-            autor={post.blog.nome}
-            cliques={post.cliques}
-            data={post.dataPublicacao}
-            titulo={post.titulo}
-            thumbnailUrl={post.thumbnail}
-            postUrl={post.url}
-            key={index}
-        />
-    ))
+    const listaDeCards = props.posts.map((post, index) => {
+        if(post.titulo.includes(props.pesquisa)) {
+            return (
+                <Card 
+                    autor={post.blog.nome}
+                    cliques={post.cliques}
+                    data={post.dataPublicacao}
+                    titulo={post.titulo}
+                    thumbnailUrl={post.thumbnail}
+                    postUrl={post.url}
+                    key={index}
+                />
+            )
+        }
+    })
         
     return (
         <div
             className={styles.cardsDiv}
         > 
-            {cardsArray} 
+            {listaDeCards} 
         </div>
     )
 }

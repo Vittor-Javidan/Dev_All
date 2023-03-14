@@ -2,7 +2,25 @@
 @media (max-width: 500px) {
     .div {
         width: 100%;
-        padding-top: 100px;
+        padding-top: 10px;
+    }    
+
+    .pesquisaDiv {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 10px;
+        margin: auto;
+    }
+
+    .pesquisaInput {
+        height: 40px;
+        width: 90%;
+        padding-left: 10px;
+    }
+
+    .pesquisaButton {
+        width: 30px;
     }
 
     .cardsDiv {
@@ -21,7 +39,26 @@
 @media (min-width: 501px) {
     .div {
         width: 100%;
-        padding-top: 100px;
+        padding-top: 50px;
+    }    
+
+    .pesquisaDiv {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        width: 70%;
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .pesquisaInput {
+        height: 40px;
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .pesquisaButton {
+        width: 50px;
     }
 
     .cardsDiv {

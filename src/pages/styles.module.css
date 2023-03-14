@@ -16,6 +16,15 @@
 
         overflow-y: scroll;
     }
+
+    .div::-webkit-scrollbar {
+        width: 5px;
+        height: 95%;
+    }
+    
+    .div::-webkit-scrollbar-thumb {
+        background-color: #fd5d93;
+    }
 }
 
 @media (min-width: 501px) {
@@ -38,5 +47,14 @@
         height: calc(100vh - 95px);
 
         overflow-y: scroll;
+    }
+
+    .div::-webkit-scrollbar {
+        width: 5px;
+        height: 95%;
+    }
+    
+    .div::-webkit-scrollbar-thumb {
+        background-color: #fd5d93;
     }
 }
