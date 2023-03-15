@@ -13,6 +13,7 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
+        width: 100%;
         padding: 0 10px;
         margin: auto;
     }
@@ -45,6 +46,10 @@
 
         background-color: #27293d;
         border-width: 0px;
+    }
+
+    .carragarMais:active {
+        color: #fd5d93;
     }
 }
 
