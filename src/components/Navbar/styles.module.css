@@ -148,7 +148,7 @@
         margin-right: 7%;
     }
 
-    .li {
+    .li {        
         list-style: none;
         
         font-family: "Share Tech Mono", sans-serif;
@@ -166,6 +166,12 @@
     .a:active {
         text-decoration: none;
         text-decoration-line: none;
+    }
+
+    .a:hover {        
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-decoration-thickness: 2px;
     }
 
     .discord {

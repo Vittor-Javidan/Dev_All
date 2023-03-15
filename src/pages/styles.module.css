@@ -60,3 +60,19 @@
         background-color: #fd5d93;
     }
 }
+
+/*Para evitar a barra de pesquisa desaparecer, quando se faz transição entre viewports*/
+@media (min-width: 500px) AND (max-width: 655px) {
+
+    .div {
+        padding-top: 170px;
+    }
+}
+
+/*Para evitar a barra de pesquisa desaparecer, quando se faz transição entre viewports*/
+@media (min-width: 656px) AND (max-width: 920px) {
+    
+    .div {
+        padding-top: 130px;
+    }
+}
