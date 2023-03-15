@@ -9,10 +9,8 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        gap: 32px;
 
         width: 100%;
-        padding: 20px;
 
         border-bottom: 2px solid #fd5d93;
         background-color: #27293d;
@@ -23,6 +21,7 @@
     .h1 {
         width: fit-content;
         height: fit-content;
+        margin: 20px;
         padding: 6px;
 
         border-radius: 8px;
@@ -37,6 +36,8 @@
     .label {
         width: fit-content;
         height: fit-content;
+
+        margin: 20px;
     }
     
     .i {
@@ -51,8 +52,6 @@
         flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
-        gap: 24px;
-
         width: 100%;
     }
 
@@ -61,16 +60,27 @@
     }
 
     .li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 50px;
+        width: 100%;
         list-style: none;
         
         font-family: "Share Tech Mono", sans-serif;
-        font-size: 16px;
+        font-size: 24px;
         color: #FFF;
 
         cursor: pointer;
     }
 
+    .li:active {
+        background-color: #1e1f2f;
+    }
+
     .a {
+        width: 100%;
         text-decoration: none;
         text-decoration-line: none;
     }
@@ -143,22 +153,32 @@
     .ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px;
 
         margin-right: 7%;
     }
 
     .li {        
+        height: 100%;
+        
         list-style: none;
         
         font-family: "Share Tech Mono", sans-serif;
         font-size: 16px;
         color: #FFF;
-
+        
         cursor: pointer;
     }
-
+    
+    a:hover > .li {        
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-decoration-thickness: 2px;
+    }
+    
     .a {
+        height: max-content;
+        padding: 9px 9px;
+
         text-decoration: none;
         text-decoration-line: none;
     }
@@ -168,11 +188,6 @@
         text-decoration-line: none;
     }
 
-    .a:hover {        
-        text-decoration: underline;
-        text-decoration-color: red;
-        text-decoration-thickness: 2px;
-    }
 
     .discord {
         color: #1f8ef1;

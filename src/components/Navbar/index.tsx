@@ -24,68 +24,68 @@ export default function Navbar() {
                     ${styles.ul}
                     ${!toggle && styles.ulDisable}
                 `}>
-                    <li 
-                        className={styles.li}
+                    <a 
+                        className={styles.a} 
+                        href="https://discord.com/invite/JyXzTcP"
+                        target={"_blank"}
                     >
-                        <a 
+                        <li 
                             className={`
-                                ${styles.a}
+                                ${styles.li}
                                 ${styles.discord}
-                            `} 
-                            href="https://discord.com/invite/JyXzTcP"
-                            target={"_blank"}
+                            `}
                         >
-                            DISCORD
-                        </a>
-                    </li>
-                    <li 
-                        className={styles.li}
+                                DISCORD
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a} 
+                        href=""
                     >
-                        <a 
+                        <li 
                             className={`
-                                ${styles.a}
+                                ${styles.li}
                                 ${styles.taverna}
-                            `} 
-                            href=""
+                            `}
                         >
-                            TAVERNA
-                        </a>
-                    </li>
-                    <li className={styles.li}>
-                        <a 
-                            className={styles.a}
-                        >
-                            REVISTA
-                        </a>
-                    </li>
-                    <li className={styles.li}>
-                        <a 
-                            className={styles.a}
-                        >
-                            BLOGS
-                        </a>
-                    </li>
-                    <li className={styles.li}>
-                        <a 
-                            className={styles.a}
-                        >
-                            SOBRE
-                        </a>
-                    </li>
-                    <li className={styles.li}>
-                        <a 
-                            className={styles.a}
-                        >
-                            CADASTRE-SE!
-                        </a>
-                    </li>
-                    <li className={styles.li}>
-                        <a 
-                            className={styles.a}
-                        >
-                            ENTRAR
-                        </a>
-                    </li>
+                                TAVERNA
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a}
+                    >
+                        <li className={styles.li}>
+                                REVISTA
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a}
+                    >
+                        <li className={styles.li}>
+                                BLOGS
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a}
+                    >
+                        <li className={styles.li}>
+                                SOBRE
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a}
+                    >
+                        <li className={styles.li}>
+                                CADASTRE-SE!
+                        </li>
+                    </a>
+                    <a 
+                        className={styles.a}
+                    >
+                        <li className={styles.li}>
+                                ENTRAR
+                        </li>
+                    </a>
                 </ul>
             </div>
         </div>
