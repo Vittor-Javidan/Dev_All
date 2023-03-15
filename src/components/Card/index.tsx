@@ -11,6 +11,7 @@ export default function Card(props: {
     return (
         <div className={styles.card}>
             <a 
+                tabIndex={0}
                 className={styles.a}
                 onClick={() => alert(`post sem url, imagine um redirecionamento de página para "${props.autor}"`)}
             >

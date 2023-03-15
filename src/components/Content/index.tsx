@@ -4,26 +4,41 @@ import styles from './styles.module.css'
 
 
 //TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
-async function fazerFetchPosts(setPosts: Dispatch<SetStateAction<any>>, page: number) {
+async function fazerFetchPosts(
+    setPosts: Dispatch<SetStateAction<any>>, 
+    setContador: Dispatch<SetStateAction<number>>, 
+    page: number
+) {
     const postsResponse = await fetch(`https://api.devall.com.br/api/v1/post?page=${page}`)
     const postsArray = await postsResponse.json()
     setPosts(postsArray)
+    setContador(prev => prev + 1)
 }
 
 //TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
-async function fazerFetchMaisPosts(setPosts: Dispatch<SetStateAction<any[]>>, page: number) {
+async function fazerFetchMaisPosts(
+    setPosts: Dispatch<SetStateAction<any>>, 
+    setContador: Dispatch<SetStateAction<number>>, 
+    page: number
+) {
     const postsResponse = await fetch(`https://api.devall.com.br/api/v1/post?page=${page}`)
     const postsArray = await postsResponse.json()
     setPosts(prev => [...prev, ...postsArray])
+    setContador(prev => prev + 1)
 }
 
 export function Content() {
 
-    const [posts, setPosts] = useState([])
+    const [publicacoes, setPublicacoes] = useState([])
     const [pesquisa, setPesquisa] = useState("")
+    const [contadorPaginas, setContadorPaginas] = useState(1)
 
     useEffect(() => {
-        fazerFetchPosts(setPosts, 1)
+        fazerFetchPosts(
+            setPublicacoes, 
+            setContadorPaginas,
+            contadorPaginas
+        )
     }, [])
 
     return (
@@ -39,22 +54,24 @@ export function Content() {
                         console.log(setPesquisa(e.target.value))
                     }
                 />
-                {/*
-                    //TODO: Fazer com que a pesquise so ative ao apertar o botão de pesquisa, ao invés de deixar o componente controlado
-                    <button
-                        className={styles.pesquisaButton}
-                    >
-                        <i className='bx bx-search-alt' ></i>
-                    </button>
-                */}
             </div>
             <Cards 
                 pesquisa={pesquisa}
-                posts={posts}
+                posts={publicacoes}
             />
             {/*
                 //TODO: Adicionar um botão para fazer fetch de mais dados.
             */}
+            <button
+                className={styles.carragarMais}
+                onClick={() => fazerFetchMaisPosts(
+                    setPublicacoes, 
+                    setContadorPaginas, 
+                    contadorPaginas
+                )}
+            >
+                Carregue mais!
+            </button>
         </div>
     )
 }
