@@ -1,7 +1,10 @@
 /*Mobile*/
 @media (max-width: 500px) {
 
-    .div {        
+    .div {      
+        position: fixed;
+        top: 0;
+
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -89,7 +92,20 @@
 
 /*Browser*/
 @media (min-width: 501px) {
+
+    .fakeBackground {
+        position: fixed;
+        
+        width: 100%;
+        padding: 7px;
+        padding-bottom: 0;
+
+        background-color: #1e1e2e;
+    }
+    
     .div {
+        top: 0;
+
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

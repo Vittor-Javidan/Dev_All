@@ -44,6 +44,14 @@
 
 @media (min-width: 501px) {
 
+    .fakeBackground {
+        width: 100%;
+        padding: 7px;
+        padding-top: 0;
+
+        background-color: #1e1e2e;
+    }
+
     .footer {
         padding: 24px 0;
 
