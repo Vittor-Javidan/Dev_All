@@ -20,7 +20,7 @@
 }
 
 .div:first-child {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 .a {
@@ -37,6 +37,13 @@
 .red {
     font-weight: 900;
     color: red;
+}
+
+@media (max-width: 500px) {
+
+    .footer {
+        padding-bottom: 60px;
+    }
 }
 
 
