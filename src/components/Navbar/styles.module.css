@@ -10,7 +10,7 @@
         justify-content: space-between;
         align-items: center;
 
-        width: 100%;
+        width: calc(100% - 5px);
 
         border-bottom: 2px solid #fd5d93;
         background-color: #27293d;
@@ -106,9 +106,10 @@
     .fakeBackground {
         position: fixed;
         
-        width: 100%;
+        width: calc(100% - 7px);
         padding: 7px;
         padding-bottom: 0;
+        padding-right: 0;
 
         background-color: #1e1e2e;
     }

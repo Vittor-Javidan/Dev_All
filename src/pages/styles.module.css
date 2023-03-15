@@ -21,6 +21,7 @@
     .div::-webkit-scrollbar {
         width: 5px;
         height: 95%;
+        background-color: #3a3a58;
     }
     
     .div::-webkit-scrollbar-thumb {
@@ -52,7 +53,7 @@
     }
 
     .div::-webkit-scrollbar {
-        width: 5px;
+        width: 7px;
         height: 95%;
     }
     
