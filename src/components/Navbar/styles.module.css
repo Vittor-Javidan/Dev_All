@@ -1,42 +1,64 @@
+.div { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #fd5d93;
+    background-color: #27293d;
+}
+
+.h1 {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    background-color: #000;
+    font-size: 3.2rem;
+    font-family: "Share Tech Mono", sans-serif;
+    font-weight: 400;
+    color: #FFF;
+}
+
+.ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.li {
+    list-style: none;
+    font-family: "Share Tech Mono", sans-serif;
+    color: #FFF;
+}
+
+.a {
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+.discord {
+    color: #1f8ef1;
+}
+
+.taverna {
+    color: #00d6b4;
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
-
+    
     .div {      
         position: fixed;
         top: 0;
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-
         width: calc(100% - 5px);
-
-        border-bottom: 2px solid #fd5d93;
-        background-color: #27293d;
-
-        cursor: pointer;
     }
-
+    
     .h1 {
-        width: fit-content;
-        height: fit-content;
         margin: 20px;
         padding: 6px;
-
-        border-radius: 8px;
-        background-color: #000;
-
-        font-size: 3.2rem;
-        font-family: "Share Tech Mono", sans-serif;
-        font-weight: 400;
-        color: #FFF;
     }
 
     .label {
         width: fit-content;
         height: fit-content;
-
         margin: 20px;
     }
     
@@ -48,14 +70,12 @@
     }
 
     .ul {
-        display: flex;
-        flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
 
-    .ulDisable {
+    .listaDesativada {
         display: none;
     }
 
@@ -63,16 +83,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
         height: 50px;
         width: 100%;
-        list-style: none;
-        
-        font-family: "Share Tech Mono", sans-serif;
         font-size: 24px;
-        color: #FFF;
-
-        cursor: pointer;
     }
 
     .li:active {
@@ -81,21 +94,6 @@
 
     .a {
         width: 100%;
-        text-decoration: none;
-        text-decoration-line: none;
-    }
-
-    .a:active {
-        text-decoration: none;
-        text-decoration-line: none;
-    }
-
-    .discord {
-        color: #1f8ef1;
-    }
-
-    .taverna {
-        color: #00d6b4;
     }
 }
 
@@ -103,48 +101,26 @@
 /*Browser*/
 @media (min-width: 501px) {
 
-    .fakeBackground {
+    .backGroundFalso {
         position: fixed;
-        
+        top: 0;
         width: calc(100% - 7px);
         padding: 7px;
         padding-bottom: 0;
         padding-right: 0;
-
         background-color: #1e1e2e;
     }
     
     .div {
-        top: 0;
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
         gap: 32px;
-
         width: 100%;
         padding: 15px;
-
-        border-bottom: 2px solid #fd5d93;
-        background-color: #27293d;
-
         cursor: pointer;
     }
 
     .h1 {
-        width: fit-content;
-        height: fit-content;
         padding: 6px;
         margin-left: 7%;
-
-        border-radius: 8px;
-        background-color: #000;
-
-        font-size: 3.2rem;
-        font-family: "Share Tech Mono", sans-serif;
-        font-weight: 400;
-        color: #FFF;
     }
 
     .label {
@@ -152,21 +128,12 @@
     }
 
     .ul {
-        display: flex;
-        flex-wrap: wrap;
-
         margin-right: 7%;
     }
 
     .li {        
         height: 100%;
-        
-        list-style: none;
-        
-        font-family: "Share Tech Mono", sans-serif;
-        font-size: 16px;
-        color: #FFF;
-        
+        font-size: 16px;        
         cursor: pointer;
     }
     
@@ -179,22 +146,5 @@
     .a {
         height: max-content;
         padding: 9px 9px;
-
-        text-decoration: none;
-        text-decoration-line: none;
-    }
-
-    .a:active {
-        text-decoration: none;
-        text-decoration-line: none;
-    }
-
-
-    .discord {
-        color: #1f8ef1;
-    }
-
-    .taverna {
-        color: #00d6b4;
     }
 }

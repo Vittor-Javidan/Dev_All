@@ -1,4 +1,5 @@
- import styles from './styles.module.css'
+ import { ReactNode } from 'react'
+import styles from './styles.module.css'
 
 export default function Card(props: {
     autor: string
@@ -15,48 +16,97 @@ export default function Card(props: {
                 className={styles.a}
                 onClick={() => alert(`post sem url, imagine um redirecionamento de página para "${props.autor}"`)}
             >
-                <h1 className={styles.autor}>
+                <Autor>
                     {props.autor}
-                </h1>
-                {props.thumbnailUrl !== null 
-                    ? (
-                        <img
-                            className={styles.img} 
-                            src={props.thumbnailUrl} 
-                            alt="thumbnail" 
-                        />
-                    )
-                    : (
-                        <div
-                            className={styles.noImg}
-                        >
-                            <h1
-                                className={styles.noImgText}
-                            >
-                                Imagem não disponível                             
-                            </h1>
-                        </div>
-                    )
-                }
-                <h2
-                    className={styles.titulo}
-                >
-                    {props.titulo}</h2>
-                <div
-                    className={styles.estatistica}
-                >
-                    <h3
-                        className={styles.h3}
-                    >
-                        publicado em {props.data}
-                    </h3>
-                    <h3
-                        className={styles.h3}
-                    >
-                        cliques: {props.cliques}
-                    </h3>
-                </div>
+                </Autor>
+                <Thumbnail
+                    thumbnailUrl={props.thumbnailUrl}
+                />
+                <Titulo>
+                    {props.titulo}
+                </Titulo>
+                <AreaEstatistica>
+                    <DataPublicacao>
+                        {props.data}
+                    </DataPublicacao>
+                    <Cliques>
+                        {props.cliques}
+                    </Cliques>
+                </AreaEstatistica>
             </a>
         </div>
+    )
+}
+
+function Autor(props: {children: ReactNode}) {
+    return (
+        <h1 className={styles.autor}>
+            {props.children}
+        </h1>
+    )
+}
+
+function Thumbnail(props: {thumbnailUrl: string | null,}) {
+    return (<>
+        {props.thumbnailUrl !== null 
+            ? (
+                <img
+                    className={styles.thumbnail} 
+                    src={props.thumbnailUrl} 
+                    alt="thumbnail" 
+                />
+            )
+            : (
+                <div
+                    className={styles.noThumbnail}
+                >
+                    <h1
+                        className={styles.noThumbnailText}
+                    >
+                        Imagem não disponível                             
+                    </h1>
+                </div>
+            )
+        }
+    </>)
+}
+
+function Titulo(props: {children: ReactNode}) {
+    return (
+        <h2
+            className={styles.titulo}
+        >
+            {props.children}
+        </h2>
+    )
+}
+
+function AreaEstatistica(props: {children: ReactNode}) {
+    return (
+        <div
+            className={styles.estatistica}
+        >
+            {props.children}
+        </div>
+    )
+}
+
+function DataPublicacao(props: {children: ReactNode}) {
+    return (
+        <h3
+            className={styles.h3}
+        >
+            publicado em {props.children}
+        </h3>
+    )
+}
+
+function Cliques(props: {children: ReactNode}) {
+    return (
+        <h3
+            className={styles.h3}
+        >
+            cliques: {props.children}
+        </h3>
     )
 }

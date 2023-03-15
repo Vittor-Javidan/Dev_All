@@ -1,43 +1,67 @@
+.card {
+    background-color: #FFF;
+    border-radius: 7px;
+}
+
+.thumbnail {
+    height: 250px;
+    object-fit: cover;
+}
+
+.noThumbnail {
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    object-fit: cover;
+    background-color: black;
+}
+
+.noThumbnailText {
+    margin: auto 0;
+    text-align: center;
+    font-family: "Share Tech Mono", sans-serif;
+    font-size: 40px;
+    color: white;
+}
+
+.a {
+    text-decoration-line: none;
+    text-decoration: none;
+}
+
+.titulo {
+    margin: 5px 10px;
+    font-weight: 800;
+}
+
+.estatistica {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px;
+    margin: 5px 20px;
+}
+
+.h3 {
+    width: fit-content;
+    height: fit-content;
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
 
     .card {
         width: 100%;
-        background-color: #FFF;
-        min-height: 300px;
-
-        border-radius: 7px;
-
-        cursor: pointer;
     }
     
-    .img {
+    .thumbnail {
         width: 100%;
-        height: 250px;
-        object-fit: cover;
     }
     
-    .noImg {
-        display: flex;
-        justify-content: center;
+    .noThumbnail {
         width: 100%;
-        height: 250px;
-        object-fit: cover;
-        background-color: black;
-    }
-    
-    .noImgText {
-        margin: auto 0;
-        text-align: center;
-        font-family: "Share Tech Mono", sans-serif;
-        font-size: 40px;
-        color: white;
     }
 
-    .a {
-        text-decoration-line: none;
-        text-decoration: none;
-    }
 
     .autor {
         text-align: center;
@@ -46,27 +70,14 @@
     }
 
     .titulo {
-        margin: 5px 10px;
         min-height: 100px;
-
-
         text-align: center;
         font-size: 2rem;
-        font-weight: 800;
     }
 
-    .estatistica {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        gap: 10px;
-        margin: 5px 20px;
-    }
 
     .h3 {
         font-size: 1.2rem;
-        width: fit-content;
-        height: fit-content;
     }
 }
 
@@ -76,10 +87,6 @@
 
     .card {
         width: 400px;
-        background-color: #FFF;
-        
-        border-radius: 7px;
-
         cursor: pointer;
     }
 
@@ -87,32 +94,12 @@
         box-shadow: 0 0 5px 0px #fd5d93;
     }
     
-    .img {
+    .thumbnail {
         width: 400px;
-        height: 250px;
-        object-fit: cover;
     }
     
-    .noImg {
-        display: flex;
-        justify-content: center;
+    .noThumbnail {
         width: 400px;
-        height: 250px;
-        object-fit: cover;
-        background-color: black;   
-    }
-    
-    .noImgText {
-        margin: auto 0;
-        text-align: center;
-        font-family: "Share Tech Mono", sans-serif;
-        font-size: 40px;
-        color: white;
-    }
-
-    .a {
-        text-decoration-line: none;
-        text-decoration: none;
     }
 
     .autor {
@@ -122,25 +109,12 @@
     }
 
     .titulo {
-        margin: 5px 10px;
         min-height: 175px;
-
         text-align: start;
         font-size: 2.6rem;
-        font-weight: 800;
-    }
-
-    .estatistica {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        gap: 10px;
-        margin: 5px 20px;
     }
 
     .h3 {
         font-size: 1.6rem;
-        width: fit-content;
-        height: fit-content;
     }
 }

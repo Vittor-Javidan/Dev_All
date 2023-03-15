@@ -1,27 +1,46 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.pesquisaDiv {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.pesquisaInput {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.cardsDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.carragarMais {
+    padding: 20px;
+    font-family: "Share Tech Mono", sans-serif;
+    background-color: #27293d;
+    border-width: 0px;
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
     .div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        width: 100%;
         padding-top: 10px;
     }    
 
     .pesquisaDiv {
-        display: flex;
-        justify-content: space-between;
         gap: 10px;
         width: 100%;
         padding: 0 10px;
-        margin: auto;
-    }
-
-    .pesquisaInput {
-        height: 40px;
-        width: 100%;
-        padding-left: 10px;
     }
 
     .pesquisaButton {
@@ -29,23 +48,12 @@
     }
 
     .cardsDiv {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
         gap: 20px;
-
         padding: 10px;
     }
 
     .carragarMais {
-        padding: 20px;
-
         font-size: 3.2rem;
-        font-family: "Share Tech Mono", sans-serif;
-
-        background-color: #27293d;
-        border-width: 0px;
     }
 
     .carragarMais:active {
@@ -57,27 +65,14 @@
 /*Browser*/
 @media (min-width: 501px) {
     .div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        width: 100%;
         padding-top: 50px;
     }    
 
     .pesquisaDiv {
-        display: flex;
-        justify-content: space-between;
         gap: 20px;
         width: 70%;
         max-width: 700px;
-        margin: auto;
-    }
-
-    .pesquisaInput {
-        height: 40px;
-        width: 100%;
-        padding-left: 10px;
     }
 
     .pesquisaButton {
@@ -85,12 +80,7 @@
     }
 
     .cardsDiv {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
         gap: 60px;
-
         padding: 50px;
         padding-bottom: 180px;
         margin: 0 7%;
@@ -98,13 +88,7 @@
 
     .carragarMais {
         margin-bottom: 100px;
-        padding: 20px;
-
         font-size: 3.2rem;
-        font-family: "Share Tech Mono", sans-serif;
-
-        background-color: #27293d;
-        border-width: 0px;
     }
 
     .carragarMais:hover {
