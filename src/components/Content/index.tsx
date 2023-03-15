@@ -1,6 +1,4 @@
-import { fazerFetchMaisPosts } from "@/APICalls/fazerFetchMaisPosts"
-import { fazerFetchPosts } from "@/APICalls/fazerFetchPosts"
-import { fazerFetchPostsPesquisa } from "@/APICalls/fazerFetchPostsPesquisa"
+import devAllAPI from "@/APICalls/devAllAPI"
 import { APIDataPublicacoes } from "@/types/APIdataType"
 import { useEffect, useState } from "react"
 import Card from "../Card"
@@ -13,7 +11,7 @@ export function Content() {
     const [pagina, setPagina] = useState(1)
 
     useEffect(() => {
-        fazerFetchPosts(pagina, (posts) => setPublicacoes(posts))
+        devAllAPI.fetch((posts) => setPublicacoes(posts))
         setPagina(prev => prev + 1)
     }, [])
 
@@ -23,7 +21,10 @@ export function Content() {
                 value={pesquisa}
                 onChange={(e) => setPesquisa(e.target.value)}
                 onClick={() => {
-                    fazerFetchPostsPesquisa(pesquisa, (posts) => setPublicacoes(posts))
+                    devAllAPI.fetchPesquisa(
+                        (posts) => setPublicacoes(posts),
+                        pesquisa, 
+                    )
                     setPagina(1)
                 }}
             />
@@ -32,10 +33,9 @@ export function Content() {
             />
             <CarregarMaisBotao
                 onClick={() => {
-                    fazerFetchMaisPosts(
-                        pagina,
-                        pesquisa,
-                         (posts) => setPublicacoes(prev => [...prev, ...posts])
+                    devAllAPI.fetch(
+                        (posts) => setPublicacoes(prev => [...prev, ...posts]),
+                        pagina
                     )
                     setPagina(prev => prev + 1)
                 }}
