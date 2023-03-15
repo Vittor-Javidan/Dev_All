@@ -52,13 +52,6 @@ function BarraPesquisa(
     }
 ) {
 
-    /*
-        Aqui na barra pesquisa seria interessante se eu pudesse fazer uma call para a api,
-        enviando as informações a serem pesquisadas, através de um outro fetch. Como não
-        encontrei uma forma de fazer isso, prefiri deixar a barra de pesquisa sem botão,
-        pois o componente já está como controlado.
-    */
-
     return (
         <div
             className={styles.pesquisaDiv}
@@ -70,6 +63,7 @@ function BarraPesquisa(
                 onChange={(e) => props.onChange(e)}
             />
             <button
+                className={styles.botaoPesquisa}
                 onClick={props.onClick}
             >
                 <i className='bx bx-search-alt'></i>

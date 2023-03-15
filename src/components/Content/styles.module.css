@@ -17,6 +17,10 @@
     padding-left: 10px;
 }
 
+.botaoPesquisa {
+    width: 50px;
+}
+
 .cardsDiv {
     display: flex;
     flex-wrap: wrap;
