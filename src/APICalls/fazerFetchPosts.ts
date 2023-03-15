@@ -1,13 +1,11 @@
 import { APIDataPublicacoes } from "@/types/APIdataType"
-import { Dispatch, SetStateAction } from "react"
+import { BASE_API_URL } from "../../env"
 
 export async function fazerFetchPosts(
-    setPosts: Dispatch<SetStateAction<APIDataPublicacoes>>, 
-    setContador: Dispatch<SetStateAction<number>>, 
-    page: number
+    page: number,
+    callback: (devAllAPIData: APIDataPublicacoes) => void
 ) {
-    const postsResponse = await fetch(`https://api.devall.com.br/api/v1/post?page=${page}`)
-    const postsArray = await postsResponse.json()
-    setPosts(postsArray)
-    setContador(prev => prev + 1)
+    const response = await fetch(`${BASE_API_URL}/api/v1/post?page=${page}`)
+    const postsArray = await response.json()
+    callback(postsArray)
 }

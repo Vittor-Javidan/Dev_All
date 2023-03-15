@@ -9,6 +9,14 @@ export default function Card(props: {
     data: string
     cliques: string
 }) {
+
+    /*
+        Por algum motivo, quando eu chamo a API, todos os objetos dentro dela vem com a
+        url setado para valor nullo, consequentemente não permitindo redirecionar o
+        usuário para o site referente a publicação. Então deixei um simples alerta, para
+        simular que o usuário foi redirecionado.
+    */
+
     return (
         <div className={styles.card}>
             <a 

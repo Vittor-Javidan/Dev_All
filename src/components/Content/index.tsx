@@ -1,5 +1,6 @@
 import { fazerFetchMaisPosts } from "@/APICalls/fazerFetchMaisPosts"
 import { fazerFetchPosts } from "@/APICalls/fazerFetchPosts"
+import { fazerFetchPostsPesquisa } from "@/APICalls/fazerFetchPostsPesquisa"
 import { APIDataPublicacoes } from "@/types/APIdataType"
 import { useEffect, useState } from "react"
 import Card from "../Card"
@@ -9,14 +10,11 @@ export function Content() {
 
     const [publicacoes, setPublicacoes] = useState<APIDataPublicacoes>([])
     const [pesquisa, setPesquisa] = useState("")
-    const [contadorPaginas, setContadorPaginas] = useState(1)
+    const [pagina, setPagina] = useState(1)
 
     useEffect(() => {
-        fazerFetchPosts(
-            setPublicacoes, 
-            setContadorPaginas,
-            contadorPaginas
-        )
+        fazerFetchPosts(pagina, (posts) => setPublicacoes(posts))
+        setPagina(prev => prev + 1)
     }, [])
 
     return (
@@ -24,17 +22,23 @@ export function Content() {
             <BarraPesquisa
                 value={pesquisa}
                 onChange={(e) => setPesquisa(e.target.value)}
+                onClick={() => {
+                    fazerFetchPostsPesquisa(pesquisa, (posts) => setPublicacoes(posts))
+                    setPagina(1)
+                }}
             />
             <Cards 
-                pesquisa={pesquisa}
                 posts={publicacoes}
             />
             <CarregarMaisBotao
-                onClick={() => fazerFetchMaisPosts(
-                    setPublicacoes, 
-                    setContadorPaginas, 
-                    contadorPaginas
-                )}
+                onClick={() => {
+                    fazerFetchMaisPosts(
+                        pagina,
+                        pesquisa,
+                         (posts) => setPublicacoes(prev => [...prev, ...posts])
+                    )
+                    setPagina(prev => prev + 1)
+                }}
             />
         </div>
     )
@@ -44,8 +48,17 @@ function BarraPesquisa(
     props: {
         value: string
         onChange: (e: any) => void
+        onClick: () => void
     }
 ) {
+
+    /*
+        Aqui na barra pesquisa seria interessante se eu pudesse fazer uma call para a api,
+        enviando as informações a serem pesquisadas, através de um outro fetch. Como não
+        encontrei uma forma de fazer isso, prefiri deixar a barra de pesquisa sem botão,
+        pois o componente já está como controlado.
+    */
+
     return (
         <div
             className={styles.pesquisaDiv}
@@ -56,29 +69,31 @@ function BarraPesquisa(
                 placeholder="Encontre aqui"
                 onChange={(e) => props.onChange(e)}
             />
+            <button
+                onClick={props.onClick}
+            >
+                <i className='bx bx-search-alt'></i>
+            </button>
         </div>
     )
 }
 
 function Cards(props: {
-    pesquisa: string
     posts: any[]
 }): JSX.Element {
 
     const listaDeCards = props.posts.map((post, index) => {
-        if(post.titulo.includes(props.pesquisa)) {
-            return (
-                <Card 
-                    autor={post.blog.nome}
-                    cliques={post.cliques}
-                    data={post.dataPublicacao}
-                    titulo={post.titulo}
-                    thumbnailUrl={post.thumbnail}
-                    postUrl={post.url}
-                    key={index}
-                />
-            )
-        }
+        return (
+            <Card 
+                autor={post.blog.nome}
+                cliques={post.cliques}
+                data={post.dataPublicacao}
+                titulo={post.titulo}
+                thumbnailUrl={post.thumbnail}
+                postUrl={post.url}
+                key={index}
+            />
+        )
     })
         
     return (

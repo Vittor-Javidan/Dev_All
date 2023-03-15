@@ -46,6 +46,14 @@ function NavItems(props: {
     ativado: boolean
 }) {
 
+    /*
+        Como criar as outras páginas levaria muito tempo, alertas foram deixados
+        para simular um redirecionamento de página onde se fazia sentido. Estou 
+        considerando o trabalho finalizado por aqui, pois já gastaria um tempo relevante 
+        da minha vida pessoal em um teste técnico, e possuo outras responsabilidades
+        nesse momento.
+    */
+
     const normalNavItem = [
         "REVISTA",
         "BLOGS",
@@ -90,7 +98,8 @@ function DiscordNavItem() {
 function TavernaNavItem() {
     return (
         <a 
-            className={styles.a} 
+            className={styles.a}
+            onClick={() => alert('Imagine aqui um redirecionamento para página "TAVERNA"')}
         >
             <li 
                 className={`
@@ -108,9 +117,11 @@ function NavItemRestante(props: {
     dataArray: string[]
 }) {
     return (<>
-        {props.dataArray.map(string => (
+        {props.dataArray.map((string, index) => (
             <a 
                 className={styles.a}
+                onClick={() => alert(`Imagine aqui um redirecionamento para página "${string}"`)}
+                key={index}
             >
                 <li className={styles.li}>
                         {string}
