@@ -1,3 +1,4 @@
+import { APIDataPublicacoes } from "@/types/APIdataType"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
@@ -5,7 +6,7 @@ import styles from './styles.module.css'
 
 //TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
 async function fazerFetchPosts(
-    setPosts: Dispatch<SetStateAction<any>>, 
+    setPosts: Dispatch<SetStateAction<APIDataPublicacoes>>, 
     setContador: Dispatch<SetStateAction<number>>, 
     page: number
 ) {
@@ -17,7 +18,7 @@ async function fazerFetchPosts(
 
 //TODO: definir o tipo do setPosts, para fazer o typescript para de reclamar
 async function fazerFetchMaisPosts(
-    setPosts: Dispatch<SetStateAction<any>>, 
+    setPosts: Dispatch<SetStateAction<APIDataPublicacoes>>, 
     setContador: Dispatch<SetStateAction<number>>, 
     page: number
 ) {
@@ -29,7 +30,7 @@ async function fazerFetchMaisPosts(
 
 export function Content() {
 
-    const [publicacoes, setPublicacoes] = useState([])
+    const [publicacoes, setPublicacoes] = useState<APIDataPublicacoes>([])
     const [pesquisa, setPesquisa] = useState("")
     const [contadorPaginas, setContadorPaginas] = useState(1)
 
