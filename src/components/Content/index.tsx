@@ -1,5 +1,5 @@
 import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
-import { ChangeEventHandler, useEffect, useState } from "react"
+import { ChangeEventHandler, MouseEventHandler, useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
 
@@ -55,7 +55,7 @@ function BarraPesquisa(
     props: {
         value: string
         onChange: ChangeEventHandler<HTMLInputElement>
-        onClick: () => void
+        onClick: MouseEventHandler<HTMLButtonElement>
     }
 ) {
 
@@ -107,7 +107,7 @@ function Cards(props: {
 }
 
 function CarregarMaisBotao(props: {
-    onClick: () => void
+    onClick: MouseEventHandler<HTMLButtonElement>
 }) {
     return (
         <button
