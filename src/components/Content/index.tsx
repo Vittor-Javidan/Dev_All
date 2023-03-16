@@ -1,5 +1,4 @@
-import devAllAPI from "@/APICalls/devAllAPI"
-import { APIDataPublicacoes } from "@/types/APIdataType"
+import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
 import { useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
