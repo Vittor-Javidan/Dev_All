@@ -1,40 +1,25 @@
-import { APIDataPublicacoes } from "@/types/APIdataType"
 import { BASE_API_URL } from "../../env"
+
+export type APIDataPublicacoes = {
+    blog: { nome: string },
+    cliques: number,
+    dataPublicacao: string,
+    titulo: string,
+    thumbnail: string,
+    url: string,
+}[]
 
 class DevAllAPI {
     
-    fetch(
-        callback: (devAllAPIData: APIDataPublicacoes) => void,
-        pagina: number = 1
+    async fetch(
+        route: string = '',
+        callback: (responseData: APIDataPublicacoes) => void,
     ) {
-        fazerFetchPosts(pagina, (posts) => callback(posts))
-    }
-
-    fetchPesquisa(
-        callback: (devAllAPIData: APIDataPublicacoes) => void,
-        pesquisa: string
-    ) {
-        fazerFetchPostsPesquisa( pesquisa, (posts) => callback(posts))
+        const response = await fetch(`${BASE_API_URL}/api/v1${route}`)
+        const postsArray = await response.json()
+        callback(postsArray)
     }
 }
 
 const devAllAPI = new DevAllAPI()
 export default devAllAPI
-
-async function fazerFetchPostsPesquisa(
-    pesquisa: string,
-    callback: (devAllAPIData: APIDataPublicacoes) => void 
-) {
-    const response = await fetch(`${BASE_API_URL}/api/v1/post?search=${pesquisa}`)
-    const postsArray = await response.json()
-    callback(postsArray)
-}
-
-async function fazerFetchPosts(
-    page: number,
-    callback: (devAllAPIData: APIDataPublicacoes) => void
-) {
-    const response = await fetch(`${BASE_API_URL}/api/v1/post?page=${page}`)
-    const postsArray = await response.json()
-    callback(postsArray)
-}

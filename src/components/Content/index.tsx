@@ -4,41 +4,51 @@ import { useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
 
+function useFirstPostsFetch(callback: (devAllPosts: APIDataPublicacoes) => void) {
+    useEffect(() => {
+        devAllAPI.fetch('/post',
+            (posts) => callback(posts)
+        )
+    }, [])
+}
+
 export function Content() {
 
     const [publicacoes, setPublicacoes] = useState<APIDataPublicacoes>([])
-    const [pesquisa, setPesquisa] = useState("")
+    const [textoPesquisa, setTextoPesquisa] = useState("")
     const [pagina, setPagina] = useState(1)
 
-    useEffect(() => {
-        devAllAPI.fetch((posts) => setPublicacoes(posts))
+    useFirstPostsFetch((posts) => {
+        setPublicacoes(posts)
         setPagina(prev => prev + 1)
-    }, [])
+    })
+
+    function pesquisar() {
+        devAllAPI.fetch(`/post?search=${textoPesquisa}`, 
+            (responseData) => setPublicacoes(responseData),
+        )
+        setPagina(1)
+    }
+
+    function carregarMais() {
+        devAllAPI.fetch(`/post?page=${pagina}`,
+            (responseData) => setPublicacoes(prev => [...prev, ...responseData]),
+        )
+        setPagina(prev => prev + 1)
+    }
 
     return (
         <div className={styles.div}>
             <BarraPesquisa
-                value={pesquisa}
-                onChange={(e) => setPesquisa(e.target.value)}
-                onClick={() => {
-                    devAllAPI.fetchPesquisa(
-                        (posts) => setPublicacoes(posts),
-                        pesquisa, 
-                    )
-                    setPagina(1)
-                }}
+                value={textoPesquisa}
+                onChange={(e) => setTextoPesquisa(e.target.value)}
+                onClick={pesquisar}
             />
             <Cards 
                 posts={publicacoes}
             />
             <CarregarMaisBotao
-                onClick={() => {
-                    devAllAPI.fetch(
-                        (posts) => setPublicacoes(prev => [...prev, ...posts]),
-                        pagina
-                    )
-                    setPagina(prev => prev + 1)
-                }}
+                onClick={carregarMais}
             />
         </div>
     )
