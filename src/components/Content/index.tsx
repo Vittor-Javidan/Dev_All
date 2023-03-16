@@ -4,11 +4,9 @@ import { useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
 
-function useFirstPostsFetch(callback: (devAllPosts: APIDataPublicacoes) => void) {
+function useFetch_PrimeirasPublicacoes(callback: (devAllPosts: APIDataPublicacoes) => void) {
     useEffect(() => {
-        devAllAPI.fetch('/post',
-            (posts) => callback(posts)
-        )
+        devAllAPI.get_Publicacoes((posts) => callback(posts))
     }, [])
 }
 
@@ -18,22 +16,22 @@ export function Content() {
     const [textoPesquisa, setTextoPesquisa] = useState("")
     const [pagina, setPagina] = useState(1)
 
-    useFirstPostsFetch((posts) => {
+    useFetch_PrimeirasPublicacoes((posts) => {
         setPublicacoes(posts)
         setPagina(prev => prev + 1)
     })
 
     function pesquisar() {
-        devAllAPI.fetch(`/post?search=${textoPesquisa}`, 
-            (responseData) => setPublicacoes(responseData),
-        )
+        devAllAPI.get_PesquisarPublicacoes((responseData) => {
+            setPublicacoes(responseData)
+        }, textoPesquisa)
         setPagina(1)
     }
 
     function carregarMais() {
-        devAllAPI.fetch(`/post?page=${pagina}`,
-            (responseData) => setPublicacoes(prev => [...prev, ...responseData]),
-        )
+        devAllAPI.get_PublicacoesPagina((responseData) => {
+            setPublicacoes(prev => [...prev, ...responseData])
+        }, pagina)
         setPagina(prev => prev + 1)
     }
 
