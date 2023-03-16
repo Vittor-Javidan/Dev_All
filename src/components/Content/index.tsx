@@ -1,5 +1,5 @@
 import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
-import { useEffect, useState } from "react"
+import { ChangeEventHandler, useEffect, useState } from "react"
 import Card from "../Card"
 import styles from './styles.module.css'
 
@@ -54,7 +54,7 @@ export function Content() {
 function BarraPesquisa(
     props: {
         value: string
-        onChange: (e: any) => void
+        onChange: ChangeEventHandler<HTMLInputElement>
         onClick: () => void
     }
 ) {
