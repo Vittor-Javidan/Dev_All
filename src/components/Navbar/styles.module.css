@@ -126,9 +126,12 @@
         padding: 15px;
     }
 
+    .a_h1 {
+        margin-left: 7%;
+    }
+
     .h1 {
         padding: 6px;
-        margin-left: 7%;
     }
 
     .label {
