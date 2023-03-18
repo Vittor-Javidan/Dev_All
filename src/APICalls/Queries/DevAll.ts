@@ -1,5 +1,7 @@
-export class DevAllQueries {
+import { Queries } from "../interfaces"
+
+export class DevAllQueries implements Queries {
     root() { return "" }
-    pagina(pagina: number) { return `page=${pagina}` }
-    pesquisar(pesquisa: string) { return `search=${pesquisa}`}
+    page(page: number) { return `page=${page}` }
+    search(search: string) { return `search=${search}`}
 }

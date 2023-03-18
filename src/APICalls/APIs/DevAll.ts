@@ -1,4 +1,4 @@
-import { APIDataPublicacoes } from "../dataTypes"
+import { APIPostsData } from "../dataTypes"
 import { API, APIConnection, Queries, Routes } from "../interfaces"
 
 export class DevAllAPI implements API {
@@ -13,26 +13,26 @@ export class DevAllAPI implements API {
         this.queries = queries
     }
 
-    async get_Publicacoes(callback: (responseData: APIDataPublicacoes | null) => void) {
+    async get_Posts(callback: (responseData: APIPostsData | null) => void) {
         this.api.fetch_v1(
-            this.routes.publicacoes(), 
+            this.routes.posts(), 
             this.queries.root(),
             (data) => callback(data)
         )
     }
 
-    async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes | null) => void, pesquisa: string) {
+    async get_SearchPosts(callback: (responseData: APIPostsData | null) => void, search: string) {
         this.api.fetch_v1(
-            this.routes.publicacoes(),
-            this.queries.pesquisar(pesquisa),
+            this.routes.posts(),
+            this.queries.search(search),
             (data) => callback(data)
         )
     }
 
-    async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes | null) => void, pagina: number) {
+    async get_PagePosts(callback: (responseData: APIPostsData | null) => void, page: number) {
         this.api.fetch_v1(
-            this.routes.publicacoes(),
-            this.queries.pagina(pagina), 
+            this.routes.posts(),
+            this.queries.page(page), 
             (data) => callback(data),
         )
     }

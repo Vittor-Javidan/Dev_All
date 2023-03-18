@@ -1,5 +1,5 @@
 import API from "@/APICalls"
-import { APIDataPublicacoes } from "@/APICalls/dataTypes"
+import { APIPostsData } from "@/APICalls/dataTypes"
 import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, useState } from "react"
 import Card from "../Card"
 import usePrimeirasPublicacoes from "./hooks"
@@ -9,7 +9,7 @@ import styles from './styles.module.css'
 export function Content() {
 
     const [maintenance, setMaintenance] = useState<boolean>(false)
-    const [publicacoes, setPublicacoes] = useState<APIDataPublicacoes>([])
+    const [publicacoes, setPublicacoes] = useState<APIPostsData>([])
     const [textoPesquisa, setTextoPesquisa] = useState<string>("")
     const [pagina, setPagina] = useState<number>(1)
 
@@ -24,7 +24,7 @@ export function Content() {
     })
 
     function pesquisar() {
-        API.get_PesquisarPublicacoes((responseData) => {
+        API.get_SearchPosts((responseData) => {
             if(responseData) {
                 setPublicacoes(responseData)
                 setMaintenance(false)
@@ -36,7 +36,7 @@ export function Content() {
     }
 
     function carregarMais() {
-        API.get_PublicacoesPagina((responseData) => {
+        API.get_PagePosts((responseData) => {
             if(responseData) {
                 setPublicacoes(prev => [...prev, ...responseData])
                 setPagina(prev => prev + 1)
@@ -118,7 +118,7 @@ function BarraPesquisa(
 }
 
 function Cards(props: {
-    publicacoes: APIDataPublicacoes
+    publicacoes: APIPostsData
 }): JSX.Element {
 
     const listaDeCards = props.publicacoes.map((post, index) => {

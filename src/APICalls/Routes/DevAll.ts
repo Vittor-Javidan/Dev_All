@@ -1,7 +1,7 @@
 import { Routes } from "../interfaces";
 
 export class DevAllRoutes implements Routes {
-    publicacoes() {
+    posts() {
         return "/post"
     }
 }

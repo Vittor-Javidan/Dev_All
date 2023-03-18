@@ -1,4 +1,4 @@
-export type APIDataPublicacoes = {
+export type APIPostsData = {
     blog: { nome: string },
     cliques: number,
     dataPublicacao: string,

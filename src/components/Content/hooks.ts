@@ -1,10 +1,10 @@
 
 import API from "@/APICalls"
-import { APIDataPublicacoes } from "@/APICalls/dataTypes"
+import { APIPostsData } from "@/APICalls/dataTypes"
 import { useEffect } from "react"
 
-export default function usePrimeirasPublicacoes(callback: (devAllPosts: APIDataPublicacoes | null) => void) {
+export default function usePrimeirasPublicacoes(callback: (devAllPosts: APIPostsData | null) => void) {
     useEffect(() => {
-        API.get_Publicacoes((posts) => callback(posts))
+        API.get_Posts((posts) => callback(posts))
     }, [])
 }
