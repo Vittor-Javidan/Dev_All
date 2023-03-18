@@ -21,7 +21,13 @@ export default function Navbar() {
 }
 
 function NomeSite() {
-    return <h1 className={styles.h1}>/dev/All</h1>
+    return (
+        <a 
+            className={styles.a_h1}
+            href="https://vittor-javidan.github.io/Dev_All/">
+            <h1 className={styles.h1}>/dev/All</h1>
+        </a>
+    )
 }
 
 function NavItemMobileIcon(props: {
