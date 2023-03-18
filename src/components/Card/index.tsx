@@ -7,7 +7,7 @@ export default function Card(props: {
     postUrl: string
     titulo: string
     data: string
-    cliques: string
+    cliques: number
 }) {
 
     /*

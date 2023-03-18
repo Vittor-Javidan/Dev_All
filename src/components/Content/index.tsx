@@ -1,37 +1,49 @@
 import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
-import { ChangeEventHandler, MouseEventHandler, useEffect, useState } from "react"
+import { ChangeEventHandler, MouseEventHandler, useState } from "react"
 import Card from "../Card"
+import usePrimeirasPublicacoes from "./hooks"
 import styles from './styles.module.css'
 
-function useFetch_PrimeirasPublicacoes(callback: (devAllPosts: APIDataPublicacoes) => void) {
-    useEffect(() => {
-        devAllAPI.get_Publicacoes((posts) => callback(posts))
-    }, [])
-}
 
 export function Content() {
 
+    const [maintenance, setMaintenance] = useState<boolean>(false)
     const [publicacoes, setPublicacoes] = useState<APIDataPublicacoes>([])
-    const [textoPesquisa, setTextoPesquisa] = useState("")
-    const [pagina, setPagina] = useState(1)
+    const [textoPesquisa, setTextoPesquisa] = useState<string>("")
+    const [pagina, setPagina] = useState<number>(1)
 
-    useFetch_PrimeirasPublicacoes((posts) => {
-        setPublicacoes(posts)
-        setPagina(prev => prev + 1)
+    usePrimeirasPublicacoes((posts) => {
+        if(posts) {
+            setPublicacoes(posts)
+            setPagina(prev => prev + 1)
+            setMaintenance(false)
+        } else {
+            setMaintenance(true)
+        }
     })
 
     function pesquisar() {
         devAllAPI.get_PesquisarPublicacoes((responseData) => {
-            setPublicacoes(responseData)
+            if(responseData) {
+                setPublicacoes(responseData)
+                setMaintenance(false)
+                setPagina(1)
+            } else {
+                setMaintenance(true)
+            }
         }, textoPesquisa)
-        setPagina(1)
     }
 
     function carregarMais() {
         devAllAPI.get_PublicacoesPagina((responseData) => {
-            setPublicacoes(prev => [...prev, ...responseData])
+            if(responseData) {
+                setPublicacoes(prev => [...prev, ...responseData])
+                setPagina(prev => prev + 1)
+                setMaintenance(false)
+            } else {
+                setMaintenance(true)
+            }
         }, pagina)
-        setPagina(prev => prev + 1)
     }
 
     return (
@@ -41,14 +53,29 @@ export function Content() {
                 onChange={(e) => setTextoPesquisa(e.target.value)}
                 onClick={pesquisar}
             />
+            <Maintenance 
+                maintenance={maintenance}
+            />
             <Cards 
-                posts={publicacoes}
+                publicacoes={publicacoes}
             />
             <CarregarMaisBotao
                 onClick={carregarMais}
             />
         </div>
     )
+}
+
+function Maintenance(props: { maintenance: boolean }) {
+    return (<>
+        {props.maintenance && (
+            <h1
+                className={styles.h1}
+            >
+                Servidores em manutenção. Voltaremos em breve!
+            </h1>
+        )}
+    </>)
 }
 
 function BarraPesquisa(
@@ -80,28 +107,30 @@ function BarraPesquisa(
 }
 
 function Cards(props: {
-    posts: any[]
+    publicacoes: APIDataPublicacoes
 }): JSX.Element {
 
-    const listaDeCards = props.posts.map((post, index) => {
-        return (
-            <Card 
-                autor={post.blog.nome}
-                cliques={post.cliques}
-                data={post.dataPublicacao}
-                titulo={post.titulo}
-                thumbnailUrl={post.thumbnail}
-                postUrl={post.url}
-                key={index}
-            />
-        )
+    const listaDeCards = props.publicacoes.map((post, index) => {
+        if(props.publicacoes.length > 0) {
+            return (
+                <Card 
+                    autor={post.blog.nome}
+                    cliques={post.cliques}
+                    data={post.dataPublicacao}
+                    titulo={post.titulo}
+                    thumbnailUrl={post.thumbnail}
+                    postUrl={post.url}
+                    key={index}
+                />
+            )
+        }
     })
         
     return (
         <div
             className={styles.cardsDiv}
         > 
-            {listaDeCards} 
+            {listaDeCards.length > 0 && listaDeCards} 
         </div>
     )
 }

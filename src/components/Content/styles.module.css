@@ -35,6 +35,14 @@
     border-width: 0px;
 }
 
+.h1 {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 3rem;
+    font-family: "Share Tech Mono", sans-serif;
+    color: white
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
     .div {

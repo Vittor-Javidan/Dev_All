@@ -9,31 +9,55 @@ export type APIDataPublicacoes = {
     url: string,
 }[]
 
-class DevAllAPI {
+class DevAllConnect {
     
-    private async fetch(
-        route: string = '',
-        callback: (responseData: APIDataPublicacoes) => void,
+    async fetch_v1(
+        route: string,
+        callback: (responseData: APIDataPublicacoes | null) => void,
     ) {
         const response = await fetch(`${BASE_API_URL}/api/v1${route}`)
-        const postsArray = await response.json()
-        callback(postsArray)
+            .then(response => response.json())
+
+        response
+        ? callback(response)
+        : callback(null)         
+    }
+}
+
+class DevAllQueries {
+    
+    publicacao() {
+        return '/post'
     }
 
-    async get_Publicacoes(callback: (responseData: APIDataPublicacoes) => void) {
-        this.fetch('/post',
+    publicacaoPagina(pagina: number) {
+        return `/post?page=${pagina}`
+    }
+
+    pesquisar(pesquisa: string) {
+        return `/post?search=${pesquisa}`
+    }
+}
+
+class DevAllAPI {
+
+    fetch =  new DevAllConnect().fetch_v1
+    queries = new DevAllQueries()
+
+    async get_Publicacoes(callback: (responseData: APIDataPublicacoes | null) => void) {
+        this.fetch(this.queries.publicacao(),
+            (data) => callback(null)
+        )
+    }
+
+    async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes | null) => void, pesquisa: string) {
+        this.fetch(this.queries.pesquisar(pesquisa),
             (data) => callback(data)
         )
     }
 
-    async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes) => void, pesquisa: string) {
-        this.fetch(`/post?search=${pesquisa}`,
-            (data) => callback(data)
-        )
-    }
-
-    async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes) => void, pagina: number) {
-        this.fetch(`/post?page=${pagina}`,
+    async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes | null) => void, pagina: number) {
+        this.fetch(this.queries.publicacaoPagina(pagina),
             (data) => callback(data),
         )
     }
