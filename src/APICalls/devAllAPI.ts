@@ -10,7 +10,7 @@ import { BASE_API_URL } from "../../env"
     extremo da menor unidade possível de estruturas que pudessem enviar "mensagens"
     umas as outras, assim como a ideia base de Alan Kay sobre OOP.
 
-    Provavelmete isso aqui ainda está errado conceitualmente.
+    isso aqui ainda pode está errado conceitualmente.
 */
 
 export type APIDataPublicacoes = {
@@ -24,10 +24,10 @@ export type APIDataPublicacoes = {
 
 class APIConnection {
     async fetch_v1(
-        route: string,
+        route: string, querie: string,
         callback: (responseData: APIDataPublicacoes | null) => void,
     ) {
-        const response = await fetch(`${BASE_API_URL}/api/v1${route}`)
+        const response = await fetch(`${BASE_API_URL}/api/v1${route}${querie !== "" ? `?${querie}` : ""}`)
             .then(response => response.json())
 
         response
@@ -37,12 +37,8 @@ class APIConnection {
 }
 
 class Route {
-    publicacao(querie: string | "") {
-        return `/post${
-            querie !== "" 
-            ? `?${querie}` 
-            : ""
-        }`
+    publicacao() {
+        return "/post"
     }
 }
 
@@ -54,27 +50,31 @@ class Querie {
 
 class DevAllAPI {
 
+    static api = new APIConnection()
+    static route = new Route()
+    static querie = new Querie()
+
     async get_Publicacoes(callback: (responseData: APIDataPublicacoes | null) => void) {
-        new APIConnection().fetch_v1(
-            new Route().publicacao(
-                new Querie().root()
-            ), (data) => callback(data)
+        DevAllAPI.api.fetch_v1(
+            DevAllAPI.route.publicacao(), 
+            DevAllAPI.querie.root(),
+            (data) => callback(data)
         )
     }
 
     async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes | null) => void, pesquisa: string) {
-        new APIConnection().fetch_v1(
-            new Route().publicacao(
-                new Querie().pesquisar(pesquisa)
-            ), (data) => callback(data)
+        DevAllAPI.api.fetch_v1(
+            DevAllAPI.route.publicacao(),
+            DevAllAPI.querie.pesquisar(pesquisa),
+            (data) => callback(data)
         )
     }
 
     async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes | null) => void, pagina: number) {
-        new APIConnection().fetch_v1(
-            new Route().publicacao(
-                new Querie().pagina(pagina)
-            ), (data) => callback(data),
+        DevAllAPI.api.fetch_v1(
+            DevAllAPI.route.publicacao(),
+            DevAllAPI.querie.pagina(pagina), 
+            (data) => callback(data),
         )
     }
 }
