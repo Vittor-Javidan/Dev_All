@@ -1,4 +1,5 @@
-import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
+import API from "@/APICalls"
+import { APIDataPublicacoes } from "@/APICalls/dataTypes"
 import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, useState } from "react"
 import Card from "../Card"
 import usePrimeirasPublicacoes from "./hooks"
@@ -23,7 +24,7 @@ export function Content() {
     })
 
     function pesquisar() {
-        devAllAPI.get_PesquisarPublicacoes((responseData) => {
+        API.get_PesquisarPublicacoes((responseData) => {
             if(responseData) {
                 setPublicacoes(responseData)
                 setMaintenance(false)
@@ -35,7 +36,7 @@ export function Content() {
     }
 
     function carregarMais() {
-        devAllAPI.get_PublicacoesPagina((responseData) => {
+        API.get_PublicacoesPagina((responseData) => {
             if(responseData) {
                 setPublicacoes(prev => [...prev, ...responseData])
                 setPagina(prev => prev + 1)
