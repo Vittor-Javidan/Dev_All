@@ -1,5 +1,18 @@
 import { BASE_API_URL } from "../../env"
 
+/*
+    Essa é a minha interpretação de OOPlevada ao extremo após assistir o vídeo:
+    
+    "Object Oriented Programming is not what I thought - Talk by Anjana Vakil"
+    video: "https://www.youtube.com/watch?v=TbP2B1ijWr8"
+
+    Parece meio insano ao se olhar esse arquivo, mas é porque tentei chegar ao
+    extremo da menor unidade possível de estruturas que pudessem enviar "mensagens"
+    umas as outras, assim como a ideia base de Alan Kay sobre OOP.
+
+    Provavelmete isso aqui ainda está errado conceitualmente.
+*/
+
 export type APIDataPublicacoes = {
     blog: { nome: string },
     cliques: number,
@@ -9,7 +22,7 @@ export type APIDataPublicacoes = {
     url: string,
 }[]
 
-class DevAllConnect {
+class DevAll_Connect {
     
     async fetch_v1(
         route: string,
@@ -24,41 +37,51 @@ class DevAllConnect {
     }
 }
 
-class DevAllQueries {
-    
-    publicacao() {
-        return '/post'
-    }
+class DevAll_Routes {
 
-    publicacaoPagina(pagina: number) {
-        return `/post?page=${pagina}`
+    publicacao(querie: string | "") {
+        return `/post${querie !== "" ? `?${querie}` : ""}`
+    }
+}
+
+class DevAll_Queries {
+
+    root() {
+        return ""
+    }
+    
+    pagina(pagina: number) {
+        return `page=${pagina}`
     }
 
     pesquisar(pesquisa: string) {
-        return `/post?search=${pesquisa}`
+        return `search=${pesquisa}`
     }
 }
 
 class DevAllAPI {
 
-    fetch =  new DevAllConnect().fetch_v1
-    queries = new DevAllQueries()
-
     async get_Publicacoes(callback: (responseData: APIDataPublicacoes | null) => void) {
-        this.fetch(this.queries.publicacao(),
-            (data) => callback(null)
+        new DevAll_Connect().fetch_v1(
+            new DevAll_Routes().publicacao(
+                new DevAll_Queries().root()
+            ), (data) => callback(data)
         )
     }
 
     async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes | null) => void, pesquisa: string) {
-        this.fetch(this.queries.pesquisar(pesquisa),
-            (data) => callback(data)
+        new DevAll_Connect().fetch_v1(
+            new DevAll_Routes().publicacao(
+                new DevAll_Queries().pesquisar(pesquisa)
+            ), (data) => callback(data)
         )
     }
 
     async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes | null) => void, pagina: number) {
-        this.fetch(this.queries.publicacaoPagina(pagina),
-            (data) => callback(data),
+        new DevAll_Connect().fetch_v1(
+            new DevAll_Routes().publicacao(
+                new DevAll_Queries().pagina(pagina)
+            ), (data) => callback(data),
         )
     }
 }
