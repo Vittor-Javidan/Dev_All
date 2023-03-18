@@ -1,13 +1,13 @@
 import { APIPostsData } from "../dataTypes"
-import { API, APIConnection, Queries, Routes } from "../interfaces"
+import { APIConnection_Interface, API_Interface, Queries_Interface, Routes_Interface } from "../interfaces"
 
-export class DevAllAPI implements API {
+export class DevAllAPI implements API_Interface {
 
-    api: APIConnection
-    routes: Routes
-    queries: Queries
+    api: APIConnection_Interface
+    routes: Routes_Interface
+    queries: Queries_Interface
 
-    constructor(api: APIConnection, routes: Routes, queries: Queries) {
+    constructor(api: APIConnection_Interface, routes: Routes_Interface, queries: Queries_Interface) {
         this.api = api
         this.routes = routes
         this.queries = queries

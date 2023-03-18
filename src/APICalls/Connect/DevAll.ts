@@ -1,8 +1,8 @@
 import { BASE_API_URL } from "../../../env"
 import { APIPostsData } from "../dataTypes"
-import { APIConnection } from "../interfaces"
+import { APIConnection_Interface } from "../interfaces"
 
-export class DevAllConnect implements APIConnection {
+export class DevAllConnect implements APIConnection_Interface {
     async fetch_v1(
         route: string, querie: string,
         callback: (responseData: APIPostsData | null) => void,
