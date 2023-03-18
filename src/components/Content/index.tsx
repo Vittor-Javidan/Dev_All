@@ -1,5 +1,5 @@
 import devAllAPI, { APIDataPublicacoes } from "@/APICalls/devAllAPI"
-import { ChangeEventHandler, MouseEventHandler, useState } from "react"
+import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, useState } from "react"
 import Card from "../Card"
 import usePrimeirasPublicacoes from "./hooks"
 import styles from './styles.module.css'
@@ -51,7 +51,8 @@ export function Content() {
             <BarraPesquisa
                 value={textoPesquisa}
                 onChange={(e) => setTextoPesquisa(e.target.value)}
-                onClick={pesquisar}
+                onButtonClick={pesquisar}
+                onEnter={pesquisar}
             />
             <Maintenance 
                 maintenance={maintenance}
@@ -82,9 +83,17 @@ function BarraPesquisa(
     props: {
         value: string
         onChange: ChangeEventHandler<HTMLInputElement>
-        onClick: MouseEventHandler<HTMLButtonElement>
+        onButtonClick: MouseEventHandler<HTMLButtonElement>
+        onEnter: KeyboardEventHandler<HTMLInputElement>
     }
 ) {
+
+    function onEnter(e: React.KeyboardEvent<HTMLInputElement>) {
+        console.log(e.key)
+        if (e.key === 'Enter') {
+            props.onEnter(e);
+        }
+    }
 
     return (
         <div
@@ -95,10 +104,11 @@ function BarraPesquisa(
                 value={props.value} 
                 placeholder="Encontre aqui"
                 onChange={(e) => props.onChange(e)}
+                onKeyDown={onEnter}
             />
             <button
                 className={styles.botaoPesquisa}
-                onClick={props.onClick}
+                onClick={props.onButtonClick}
             >
                 <i className='bx bx-search-alt'></i>
             </button>
