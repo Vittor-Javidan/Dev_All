@@ -22,8 +22,7 @@ export type APIDataPublicacoes = {
     url: string,
 }[]
 
-class DevAll_Connect {
-    
+class APIConnection {
     async fetch_v1(
         route: string,
         callback: (responseData: APIDataPublicacoes | null) => void,
@@ -37,50 +36,44 @@ class DevAll_Connect {
     }
 }
 
-class DevAll_Routes {
-
+class Route {
     publicacao(querie: string | "") {
-        return `/post${querie !== "" ? `?${querie}` : ""}`
+        return `/post${
+            querie !== "" 
+            ? `?${querie}` 
+            : ""
+        }`
     }
 }
 
-class DevAll_Queries {
-
-    root() {
-        return ""
-    }
-    
-    pagina(pagina: number) {
-        return `page=${pagina}`
-    }
-
-    pesquisar(pesquisa: string) {
-        return `search=${pesquisa}`
-    }
+class Querie {
+    root() { return "" }
+    pagina(pagina: number) { return `page=${pagina}` }
+    pesquisar(pesquisa: string) { return `search=${pesquisa}`}
 }
 
 class DevAllAPI {
 
     async get_Publicacoes(callback: (responseData: APIDataPublicacoes | null) => void) {
-        new DevAll_Connect().fetch_v1(
-            new DevAll_Routes().publicacao(
-                new DevAll_Queries().root()
+        new APIConnection().fetch_v1(
+            new Route().publicacao(
+                new Querie().root()
             ), (data) => callback(data)
         )
     }
 
     async get_PesquisarPublicacoes(callback: (responseData: APIDataPublicacoes | null) => void, pesquisa: string) {
-        new DevAll_Connect().fetch_v1(
-            new DevAll_Routes().publicacao(
-                new DevAll_Queries().pesquisar(pesquisa)
+        new APIConnection().fetch_v1(
+            new Route().publicacao(
+                new Querie().pesquisar(pesquisa)
             ), (data) => callback(data)
         )
     }
 
     async get_PublicacoesPagina(callback: (responseData: APIDataPublicacoes | null) => void, pagina: number) {
-        new DevAll_Connect().fetch_v1(
-            new DevAll_Routes().publicacao(
-                new DevAll_Queries().pagina(pagina)
+        new APIConnection().fetch_v1(
+            new Route().publicacao(
+                new Querie().pagina(pagina)
             ), (data) => callback(data),
         )
     }
